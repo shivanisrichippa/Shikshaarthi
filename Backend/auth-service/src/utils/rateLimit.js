@@ -1,5 +1,5 @@
 // auth-service/src/utils/rateLimit.js
-const { getDb } = require('../../../shared/libs/database/mongo-connector');
+const { getDb } = require('../shared/libs/database/mongo-connector');
 
 // In-memory fallback for rate limiting
 const rateLimitCache = new Map();

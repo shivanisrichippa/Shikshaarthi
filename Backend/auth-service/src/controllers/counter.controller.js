@@ -4,7 +4,7 @@ const WebSocket = require('ws');
 const mongoose = require('mongoose');
 
 // Import your database accessor function (adjust path as needed)
-const { getDb } = require('../../../shared/libs/database/mongo-connector'); // Adjust path to your db connection file
+const { getDb } = require('../shared/libs/database/mongo-connector'); // Adjust path to your db connection file
 
 class CounterController {
   constructor() {

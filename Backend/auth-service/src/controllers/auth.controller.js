@@ -24,8 +24,8 @@ const OTPService = require('../services/otp.service');
 const { generateAndSendOTP, verifyOTP } = require('../services/otp.service');
 
 // UTILITIES & ERRORS
-const { getDb } = require('../../../shared/libs/database/mongo-connector'); // This is no longer the primary way we access DB, but we'll leave the import.
-const { ApiError, BadRequestError } = require('../../../shared/errors/api-errors');
+const { getDb } = require('../shared/libs/database/mongo-connector'); // This is no longer the primary way we access DB, but we'll leave the import.
+const { ApiError, BadRequestError } = require('../shared/errors/api-errors');
 const { checkRateLimit } = require('../utils/rateLimit');
 
 // DATA & OTHER CONTROLLERS

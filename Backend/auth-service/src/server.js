@@ -14,7 +14,7 @@ const morganLogger = require('morgan');
 
 const apiRoutes = require('./routes/api');
 const internalRoutes = require('./routes/internal.routes');
-const errorHandler = require('../../shared/errors/error-handler');
+const errorHandler = require('./shared/errors/error-handler');
 const config = require('./config');
 const logger = require('./config/logger');
 

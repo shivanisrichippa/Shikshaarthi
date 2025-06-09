@@ -1,5 +1,5 @@
 // auth-service/src/services/rate-limit.service.js
-const { getDb } = require('../../../shared/libs/database/mongo-connector');
+const { getDb } = require('../shared/libs/database/mongo-connector');
 
 /**
  * Rate limiting function

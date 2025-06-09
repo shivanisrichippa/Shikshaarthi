@@ -1,5 +1,5 @@
 // auth-service/src/controllers/stats.controller.js
-const { getDb } = require('../../../shared/libs/database/mongo-connector');
+const { getDb } = require('../shared/libs/database/mongo-connector');
 
 /**
  * Get platform statistics including user counts and other metrics

@@ -1,7 +1,7 @@
 // auth-service/src/services/otp.service.js (FIXED VERSION)
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
-const { getDb } = require('../../../shared/libs/database/mongo-connector');
+const { getDb } = require('../shared/libs/database/mongo-connector');
 const config = require('../config');
 
 // OTP collection name
