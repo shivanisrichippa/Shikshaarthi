@@ -1,0 +1,46 @@
+/* SupercoinTerms.css */
+.supercoin-terms-section {
+    background-color: var(--bg-accent);
+  }
+  .accordion-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .accordion-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden; /* For smooth accordion feel */
+  }
+  .accordion-header {
+    background-color: #fff;
+    color: var(--text-dark);
+    cursor: pointer;
+    padding: 18px 25px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .accordion-header:hover, .accordion-header[aria-expanded="true"] {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+  }
+  .accordion-icon {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .accordion-content {
+    padding: 20px 25px;
+    background-color: white;
+    border-top: 1px solid #ddd;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+  }

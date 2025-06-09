@@ -1,0 +1,88 @@
+/* Card Styling */
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Card Body Styling */
+  .card-body {
+    padding: 15px;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  /* Fixed-size image container for uniform boxes */
+  .card-img-top {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Fixed height */
+    overflow: hidden;
+  }
+  
+  /* Image Styling */
+  .card-img-top img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .card-img-top:hover img {
+    transform: scale(1.05);
+  }
+  
+  /* View Icon Overlay Styling */
+  .view-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #d4a762b3; /* Lighter overlay to avoid brown tint */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .card-img-top:hover .view-overlay {
+    opacity: 1;
+  }
+  
+  .view-icon {
+    text-decoration: none;
+    color: #333;
+  }
+  
+
+/* Know More Button Styling */
+.btn.know-more-btn {
+    background-color: #D4A762 !important;
+    border: none;
+    transition: background-color 0.5s ease;
+    padding: 5px;
+  }
+  
+  .btn.know-more-btn:hover {
+    
+    color: #333;
+  }
+  

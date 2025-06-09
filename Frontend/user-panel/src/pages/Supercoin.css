@@ -1,0 +1,831 @@
+/* src/components/Supercoin.css */
+
+
+:root {
+  --font-main: 'Inter', sans-serif;
+
+  --color-background-dark: #000000;
+  --color-background-card: #0A0A0A;
+  --color-background-alt: #050505;
+
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #B0B0B0;
+  --color-text-muted: #757575;
+
+  --color-primary-accent: #d4a762;
+  --color-primary-accent-rgb: 212, 167, 98;
+  --color-primary-accent-darker: #b88644;
+
+  --color-border-light: rgba(212, 167, 98, 0.2);
+  --color-border-strong: var(--color-primary-accent);
+
+  --shadow-soft: 0 4px 15px rgba(0,0,0,0.2);
+  --shadow-medium: 0 8px 25px rgba(0,0,0,0.3);
+  --shadow-strong: 0 12px 35px rgba(0,0,0,0.4);
+  --shadow-gold-glow: 0 0 20px rgba(var(--color-primary-accent-rgb), 0.3);
+
+  --border-radius-base: 8px;
+  --border-radius-large: 12px;
+  --border-radius-xl: 16px;
+  --border-radius-pill: 50px;
+
+  --transition-speed: 0.3s;
+  --transition-easing: ease-in-out;
+
+  /* Variables from Levels.css */
+  --levels-bg: #1a1a1a;
+  --levels-card-bg: #2c2c2c;
+  --levels-card-bg-unlocked: #383838;
+  --levels-text-light: #FFFFFF; /* Same as --color-text-primary */
+  --levels-text-medium: #bbbbbb;
+  --levels-gold: #d4a762; /* Same as --color-primary-accent */
+  --levels-silver: #a0a0a0;
+  --levels-bronze: #b08d57;
+  
+  --levels-accent: var(--levels-gold);
+  --levels-success: #67c23a;
+  --levels-danger: #f56c6c;
+
+  --levels-font: 'Poppins', sans-serif;
+  --levels-header-font: 'Righteous', cursive;
+  --levels-card-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  --levels-card-radius: 12px;
+  --levels-transition: all 0.3s ease-in-out;
+}
+
+/* --- Global Styles & Resets --- */
+.supercoin-page-container *,
+.supercoin-page-container *::before,
+.supercoin-page-container *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.supercoin-page-container {
+  font-family: var(--font-main);
+  background-color: var(--color-background-dark);
+  color: var(--color-text-primary);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* --- Utility Classes --- */
+.highlight-gold {
+  color: var(--color-primary-accent);
+  font-weight: 700;
+}
+.sc-inline-link {
+  color: var(--color-primary-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+.sc-inline-link:hover {
+  text-decoration: underline;
+  color: var(--color-primary-accent-darker);
+}
+.coin-icon {
+  color: var(--color-primary-accent);
+  font-size: 0.9em;
+  margin-left: 2px;
+}
+
+
+/* --- Buttons --- */
+.sc-cta-button {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: var(--border-radius-pill);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all var(--transition-speed) var(--transition-easing);
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+.sc-cta-button.primary {
+  background-color: var(--color-primary-accent);
+  color: #000000;
+  box-shadow: var(--shadow-soft), var(--shadow-gold-glow);
+}
+.sc-cta-button.primary:hover {
+  background-color: var(--color-primary-accent-darker);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: var(--shadow-medium), 0 0 25px rgba(var(--color-primary-accent-rgb), 0.4);
+}
+.sc-cta-button.secondary {
+  background-color: transparent;
+  color: var(--color-primary-accent);
+  border-color: var(--color-primary-accent);
+}
+.sc-cta-button.secondary:hover {
+  background-color: var(--color-primary-accent);
+  color: #000000;
+  transform: translateY(-2px);
+}
+.sc-cta-button.large-cta {
+  padding: 15px 35px;
+  font-size: 1.1rem;
+}
+
+/* --- Section Styling --- */
+.sc-content-section, .sc-hero-section-main, .sc-final-cta-section-main {
+  padding: 60px 5%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 768px) {
+  .sc-content-section, .sc-hero-section-main, .sc-final-cta-section-main {
+    padding: 80px 5%;
+  }
+}
+.sc-content-section.alternate-bg {
+  background-color: var(--color-background-alt);
+}
+.sc-section-title {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin-bottom: 20px;
+  line-height: 1.3;
+  position: relative;
+  font-family: var(--font-main); /* Default to Inter for section titles */
+}
+.sc-rewards-showcase-levels .sc-section-title { /* Specific for levels section title */
+    font-family: var(--levels-header-font); /* Righteous for levels section */
+}
+
+.sc-section-title::after {
+  content: '';
+  display: block;
+  width: 70px;
+  height: 3px;
+  background-color: var(--color-primary-accent);
+  margin: 15px auto 0;
+  border-radius: 2px;
+  opacity: 0.8;
+}
+.sc-section-description {
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  max-width: 750px;
+  margin: 0 auto 40px auto;
+}
+.sc-rewards-showcase-levels .sc-section-description { /* Specific for levels section description */
+    font-family: var(--levels-font); /* Poppins for levels section */
+}
+
+
+/* --- Hero Section --- */
+.sc-hero-section-main {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 40px;
+  min-height: 80vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)),
+              url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8c3R1ZGVudHN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60') no-repeat center center / cover;
+  border-bottom: 2px solid var(--color-primary-accent);
+}
+@media (min-width: 992px) {
+  .sc-hero-section-main {
+    grid-template-columns: 1.1fr 0.9fr;
+    text-align: left;
+    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  .sc-hero-content-area .sc-hero-title,
+  .sc-hero-content-area .sc-hero-subtitle {
+    text-align: left;
+  }
+}
+.sc-hero-title {
+  font-size: clamp(2.5rem, 6vw, 3.8rem);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  margin-bottom: 25px;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+.sc-hero-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin-bottom: 35px;
+  line-height: 1.8;
+}
+.sc-hero-content-area .hero-cta { margin-top: 20px; }
+
+.sc-hero-visual-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 300px;
+}
+.sc-hero-rotating-image {
+  max-width: 100%;
+  width: 350px;
+  height: auto;
+  animation: sc-hero-image-spin 20s linear infinite;
+  filter: drop-shadow(0 6px 15px rgba(var(--color-primary-accent-rgb), 0.2));
+}
+@keyframes sc-hero-image-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- What is Supercoin Section --- */
+.sc-intro-box {
+    background-color: var(--color-background-card);
+    padding: 30px;
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-medium);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border-left: 4px solid var(--color-primary-accent);
+}
+.sc-intro-icon { margin-bottom: 20px; }
+.sc-intro-box .sc-section-description {
+    max-width: 800px;
+    margin-bottom: 0;
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+}
+
+
+/* --- How to Earn / Earning Activities --- */
+.sc-earning-activities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+.sc-earning-activity-card {
+  background-color: var(--color-background-card);
+  border-radius: var(--border-radius-large);
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid #222222;
+  transition: transform var(--transition-speed) var(--transition-easing), box-shadow var(--transition-speed) var(--transition-easing), border-color var(--transition-speed);
+}
+.sc-earning-activity-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-medium), var(--shadow-gold-glow);
+  border-color: var(--color-primary-accent);
+}
+.sc-activity-card-icon {
+  margin-bottom: 15px;
+  background-color: rgba(var(--color-primary-accent-rgb), 0.1);
+  border-radius: 50%;
+  padding: 10px;
+  display: inline-flex;
+}
+.sc-activity-card-content h4 {
+  font-size: 1.2rem;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.sc-activity-card-content p {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+.sc-activity-card-points {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--color-primary-accent);
+  background-color: rgba(var(--color-primary-accent-rgb), 0.15);
+  padding: 8px 16px;
+  border-radius: var(--border-radius-base);
+  margin-top: auto;
+}
+
+/* --- Styles for Integrated Spin Wheel --- */
+.sc-spin-offer-section { text-align: center; }
+.sc-spin-heading-area { display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
+.sc-spin-heading-area .lottie-player { margin-bottom: -20px; filter: drop-shadow(0 0 15px rgba(var(--color-primary-accent-rgb), 0.2)); }
+.sc-spin-wheel-interactive-area-wrapper {
+  background-color: var(--color-background-card);
+  padding: 30px;
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-medium);
+  margin: 40px auto;
+  max-width: 550px;
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #222222;
+}
+.sc-integrated-spin-wheel-wrapper { display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%; position: relative; }
+.sc-wheel-assembly { position: relative; display: flex; justify-content: center; align-items: center; width: 300px; height: 300px; margin-bottom: 10px; }
+.sc-spin-wheel-canvas { border-radius: 50%; }
+.sc-wheel-pointer-indicator {
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%); width: 0; height: 0;
+  border-left: 20px solid transparent; border-right: 20px solid transparent;
+  border-top: 30px solid var(--color-primary-accent); z-index: 10; filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.3));
+}
+.sc-wheel-pointer-indicator::before {
+  content: ''; position: absolute; top: -28px; left: 50%; transform: translateX(-50%);
+  width: 7px; height: 7px; background-color: #000000; border: 1px solid var(--color-primary-accent);
+  border-radius: 50%; box-shadow: 0 0 3px rgba(212, 167, 98, 0.5);
+}
+.sc-spin-action-button {
+  padding: 15px 40px; font-size: 1.15rem; font-weight: 700; color: #000000;
+  background: var(--color-primary-accent); border: none; border-radius: var(--border-radius-pill);
+  cursor: pointer; transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 0px var(--color-primary-accent-darker), 0 6px 15px rgba(var(--color-primary-accent-rgb), 0.3);
+  text-transform: uppercase; letter-spacing: 0.8px;
+}
+.sc-spin-action-button:hover:not(.disabled) { background-color: var(--color-primary-accent-darker); transform: translateY(1px) scale(1.01); box-shadow: 0 3px 0px var(--color-primary-accent-darker), 0 5px 12px rgba(var(--color-primary-accent-rgb), 0.4); }
+.sc-spin-action-button:active:not(.disabled) { transform: translateY(3px); box-shadow: 0 1px 0px var(--color-primary-accent-darker), 0 3px 8px rgba(var(--color-primary-accent-rgb), 0.3); }
+.sc-spin-action-button.disabled { background: #444; color: #888; cursor: not-allowed; box-shadow: 0 4px 0px #222; opacity: 0.7; }
+.sc-spin-action-button.spinning { animation: sc-pulseButtonGold 1.2s infinite ease-in-out; cursor: default; }
+@keyframes sc-pulseButtonGold { 0% { transform: scale(1); box-shadow: 0 4px 0px var(--color-primary-accent-darker), 0 6px 15px rgba(var(--color-primary-accent-rgb), 0.3); } 50% { transform: scale(1.02); box-shadow: 0 4px 0px var(--color-primary-accent-darker), 0 8px 20px rgba(var(--color-primary-accent-rgb), 0.4); } 100% { transform: scale(1); box-shadow: 0 4px 0px var(--color-primary-accent-darker), 0 6px 15px rgba(var(--color-primary-accent-rgb), 0.3); } }
+.sc-spin-result-message {
+  margin-top: 15px; padding: 15px 20px; background: var(--color-background-card);
+  border: 2px dashed var(--color-primary-accent); border-radius: var(--border-radius-large);
+  text-align: center; animation: sc-fadeInResult 0.5s ease-out, sc-bounceInResult 0.6s 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  box-shadow: var(--shadow-gold-glow); width: calc(100% - 20px); max-width: 350px;
+}
+.sc-spin-result-message h3 { color: var(--color-primary-accent); font-size: 1.8rem; margin-bottom: 8px; font-weight: 700; }
+.sc-spin-result-message .sc-prize-text { font-size: 1.2rem; color: var(--color-text-primary); font-weight: 500; margin-bottom: 15px; }
+@keyframes sc-fadeInResult { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+@keyframes sc-bounceInResult { 0% { transform: scale(0.5); opacity: 0; } 50% { transform: scale(1.1); } 70% { transform: scale(0.9); } 100% { transform: scale(1); opacity: 1; } }
+.sc-spin-notice { font-size: 0.95rem; color: var(--color-text-secondary); text-align: center; padding: 8px 12px; border-radius: var(--border-radius-base); margin-top: 10px; }
+.sc-spin-notice.eligible { color: var(--color-primary-accent); background-color: rgba(var(--color-primary-accent-rgb), 0.1); border: 1px solid rgba(var(--color-primary-accent-rgb), 0.2); }
+.sc-spin-offer-terms {
+  margin-top: 30px; background-color: rgba(var(--color-primary-accent-rgb), 0.03); padding: 20px;
+  border-radius: var(--border-radius-base); border-left: 3px solid var(--color-primary-accent);
+  text-align: left; max-width: 600px; margin-left: auto; margin-right: auto; color: var(--color-text-secondary);
+}
+.sc-spin-offer-terms h4 { color: var(--color-primary-accent); margin-bottom: 10px; }
+.sc-spin-offer-terms ul { list-style: '✓  '; padding-left: 20px; }
+.sc-spin-offer-terms li { margin-bottom: 5px; }
+
+/* --- Accordion for T&Cs --- */
+.sc-accordion-container { max-width: 800px; margin: 40px auto 0; }
+.sc-accordion-item { background-color: var(--color-background-card); border: 1px solid #222222; border-radius: var(--border-radius-base); margin-bottom: 15px; box-shadow: var(--shadow-soft); transition: border-color var(--transition-speed); }
+.sc-accordion-item[open] { border-color: var(--color-primary-accent); }
+.sc-accordion-item summary { padding: 18px 25px; font-weight: 600; font-size: 1.1rem; color: var(--color-text-primary); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; transition: color var(--transition-speed); }
+.sc-accordion-item summary::-webkit-details-marker { display: none; }
+.sc-accordion-item summary::after { content: '+'; font-size: 1.5em; color: var(--color-primary-accent); transition: transform 0.2s ease-out; }
+.sc-accordion-item[open] summary { color: var(--color-primary-accent); }
+.sc-accordion-item[open] summary::after { content: '−'; transform: rotate(180deg); }
+.sc-accordion-item p { padding: 0 25px 20px 25px; font-size: 0.95rem; color: var(--color-text-secondary); line-height: 1.8; border-top: 1px solid #222222; margin-top: 10px; padding-top: 15px; }
+
+/* --- Final CTA --- */
+.sc-final-cta-section-main { text-align: center; padding-top: 80px; padding-bottom: 100px; background: linear-gradient(to top, var(--color-background-dark) 0%, var(--color-background-alt) 100%); }
+.sc-final-cta-title { font-size: clamp(2.2rem, 5.5vw, 3rem); font-weight: 800; color: var(--color-text-primary); margin-bottom: 20px; }
+.sc-final-cta-subtitle { font-size: 1.2rem; color: var(--color-text-secondary); max-width: 650px; margin: 0 auto 35px auto; }
+
+/* --- Footer --- */
+.sc-main-footer { text-align: center; padding: 30px 5%; background-color: var(--color-background-alt); border-top: 1px solid var(--color-border-light); color: var(--color-text-muted); font-size: 0.9rem; }
+.sc-main-footer p:first-child { margin-bottom: 5px; }
+
+/* --- Page Loader Fullscreen --- */
+.supercoin-page-loading-fullscreen { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; background-color: var(--color-background-dark); }
+.supercoin-page-loading-fullscreen p { font-size: 1.3rem; color: var(--color-primary-accent); margin-top: 25px; font-weight: 600; text-align: center; }
+.lottie-fallback { min-height: 80px; display: flex; align-items: center; justify-content: center; color: var(--color-text-muted); font-size: 0.9rem; border: 1px dashed var(--color-border-light); padding: 10px; border-radius: var(--border-radius-base); }
+
+/* --- Modal Styles (for sc-modal-*) --- */
+.sc-modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.8); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 15px; }
+.sc-modal-content { background-color: var(--color-background-card); padding: 25px 30px; border-radius: var(--border-radius-large); box-shadow: var(--shadow-strong), 0 0 35px rgba(var(--color-primary-accent-rgb), 0.25); width: 100%; max-width: 480px; border: 1px solid #333; animation: sc-modal-fade-in 0.3s ease-out; color: var(--color-text-primary); }
+@keyframes sc-modal-fade-in { from { opacity: 0; transform: translateY(-25px) scale(0.92); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.sc-modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(var(--color-primary-accent-rgb), 0.2); }
+.sc-modal-header h3 { color: var(--color-primary-accent); font-size: 1.6rem; margin: 0; font-weight: 700; }
+.sc-modal-close-btn { background: none; border: none; font-size: 2.2rem; color: var(--color-text-muted); cursor: pointer; padding: 0; line-height: 1; transition: color 0.2s ease, transform 0.2s ease; }
+.sc-modal-close-btn:hover { color: var(--color-primary-accent); transform: rotate(90deg); }
+.sc-modal-body p { font-size: 1.05rem; line-height: 1.75; color: var(--color-text-secondary); margin-bottom: 20px; }
+.sc-modal-body .sc-cta-button { font-size: 1rem; padding: 12px 25px; }
+
+/* --- Responsive Adjustments for Supercoin specific elements --- */
+@media (max-width: 991px) { .sc-hero-visual-area { margin-top: 30px; padding: 10px; } .sc-hero-rotating-image { width: 300px; } }
+@media (max-width: 767px) { .sc-section-title { font-size: clamp(1.8rem, 6vw, 2.2rem); } .sc-section-description { font-size: 1rem; } .sc-hero-section-main { min-height: auto; padding-top: 60px; padding-bottom: 60px; } .sc-hero-title { font-size: clamp(2rem, 7vw, 2.8rem); } .sc-hero-subtitle { font-size: 1rem; } .sc-earning-activities-grid { grid-template-columns: 1fr; } .sc-hero-rotating-image { width: 250px; animation-duration: 18s; } }
+@media (max-width: 480px) { .sc-cta-button { padding: 10px 20px; font-size: 0.9rem; } .sc-cta-button.large-cta { padding: 12px 24px; font-size: 1rem; } .sc-hero-rotating-image { width: 200px; } .sc-hero-visual-area { min-height: 240px; } .sc-activity-card-points { font-size: 1.1rem; padding: 6px 12px; } }
+
+
+/* --- START: Appended Levels.css Content --- */
+
+/* .levels-page-container styles are for the error/loading states within the Levels section */
+.levels-page-container.loading-container,
+.levels-page-container.error-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 30vh; 
+  width:100%; 
+  font-family: var(--levels-font); /* Poppins for these states */
+}
+.loading-spinner {
+  border: 4px solid rgba(255,255,255,0.15);
+  border-top-color: var(--levels-gold);
+  border-radius: 50%; width: 50px; height: 50px;
+  animation: levelsSpin 1s linear infinite; margin-bottom: 20px;
+}
+@keyframes levelsSpin { to { transform: rotate(360deg); } }
+
+.levels-page-container.loading-container p,
+.levels-page-container.error-container p {
+  font-size: 1.1rem; color: var(--levels-text-medium);
+}
+.levels-page-container.error-container h2 {
+  font-family: var(--levels-header-font); /* Righteous */
+  color: var(--levels-danger); font-size: 1.8rem; margin-bottom: 12px;
+}
+.levels-page-container.error-container .levels-cta-button.retry-btn {
+  margin-top: 18px; background-color: var(--levels-gold); color: var(--levels-bg);
+}
+.levels-page-container.error-container .levels-cta-button.back-btn {
+  margin-top: 8px; background-color: var(--levels-text-medium); color: var(--levels-bg);
+}
+
+/* Header for Levels Section (already styled by sc-section-title/description, but keeping for font overrides if needed) */
+.levels-page-header { text-align: center; margin-bottom: 35px; width: 100%; font-family: var(--levels-font); }
+.levels-page-header h1, .levels-page-header h2 { /* If direct h1/h2 are used inside .levels-page-header */
+  font-family: var(--levels-header-font); /* Righteous */
+  color: var(--levels-gold);
+}
+.levels-page-header p { color: var(--levels-text-medium); }
+
+
+/* User Info Panel (within Levels section) */
+.user-info-panel {
+  background-color: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+  padding: 20px; border-radius: var(--levels-card-radius); margin-bottom: 35px;
+  display: flex; flex-direction: column; gap: 18px; align-items: center;
+  width: 100%; max-width: 750px; box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+  font-family: var(--levels-font); /* Poppins */
+  margin-left: auto; /* Center align the panel */
+  margin-right: auto; /* Center align the panel */
+}
+@media (min-width: 768px) { .user-info-panel { flex-direction: row; justify-content: space-between; } }
+.user-greeting h3 { font-size: 1.6rem; font-weight: 600; color: var(--levels-text-light); margin-bottom: 4px; }
+.user-greeting .college-name { font-size: 0.85rem; color: var(--levels-text-medium); }
+.user-coins-summary { text-align: center; }
+@media (min-width: 768px) { .user-coins-summary { text-align: right; } }
+.coins-balance { display: flex; align-items: center; justify-content: center; gap: 7px; margin-bottom: 8px; }
+@media (min-width: 768px) { .coins-balance { justify-content: flex-end; } }
+.coins-icon { font-size: 1.6rem; } 
+.coins-amount { font-size: 2rem; font-weight: 700; color: var(--levels-gold); }
+.coins-label { font-size: 0.85rem; color: var(--levels-text-medium); align-self: flex-end; padding-bottom: 4px; }
+.progress-to-next { font-size: 0.85rem; color: var(--levels-text-medium); } 
+.progress-to-next .next-level-name { color: var(--levels-gold); font-weight: 600; }
+.progress-bar-container { width: 100%; max-width: 220px; height: 10px; background-color: rgba(0,0,0,0.4); border-radius: 5px; margin: 7px auto 4px; overflow: hidden; }
+@media (min-width: 768px) { .progress-bar-container { margin-left: auto; margin-right: 0; } }
+.progress-bar-fill { height: 100%; background: var(--levels-gold); border-radius: 5px; transition: width 0.5s ease-out; display: flex; align-items: center; justify-content: flex-end; padding-right: 4px; }
+.progress-bar-fill span { font-size: 0.65rem; color: var(--levels-bg); font-weight: 600; }
+.max-level-reached { color: var(--levels-success); font-weight: 600; }
+
+/* Levels Grid & Path */
+.levels-grid-path {
+  display: flex; align-items: stretch; /* Ensures cards are same height if content varies */
+  padding: 15px 5px; overflow-x: auto; width: 100%; box-sizing: border-box;
+  font-family: var(--levels-font); /* Poppins for grid path items */
+}
+.levels-grid-path::-webkit-scrollbar { height: 8px; } 
+.levels-grid-path::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); border-radius: 4px; }
+.levels-grid-path::-webkit-scrollbar-thumb { background-color: var(--levels-gold); border-radius: 4px; }
+.levels-grid-path::-webkit-scrollbar-thumb:hover { background-color: #c09550; }
+.path-connector {
+  flex-shrink: 0; width: 40px; height: 5px; background-color: rgba(255,255,255,0.1); 
+  margin: 0 4px; transition: background-color 0.5s ease; align-self: center;
+}
+.path-connector.active-path { background: var(--levels-gold); }
+
+/* Level Card */
+.level-card {
+  flex: 0 0 260px; background-color: var(--levels-card-bg); border-radius: var(--levels-card-radius);
+  padding: 18px; text-align: center; box-shadow: var(--levels-card-shadow);
+  transition: var(--levels-transition); position: relative; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column;
+  align-items: center; min-height: 380px; 
+  font-family: var(--levels-font); /* Poppins */
+}
+.level-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 8px 18px rgba(0,0,0,0.35); }
+.level-card-shine { position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(212, 167, 98, 0.08) 0%, transparent 50%); transform: rotate(30deg); opacity: 0; transition: opacity 0.5s ease; }
+.level-card:hover .level-card-shine { opacity: 1; }
+.level-banner { background-color: var(--level-color, #444444); color: var(--levels-text-light); padding: 7px 12px; border-radius: 6px 6px 0 0; width: calc(100% + 36px); margin: -18px -18px 12px -18px; position: relative; }
+.level-card.locked .level-banner { background-color: #555555; }
+.level-card.active .level-banner { background-color: var(--levels-gold); color: var(--levels-bg); }
+.level-banner h3 { font-size: 1.2rem; font-weight: 600; margin: 0; font-family: var(--levels-header-font); /* Righteous */ }
+.status-badge { font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: 600; position: absolute; top: 8px; right: 8px; text-transform: uppercase; letter-spacing: 0.4px; }
+.status-badge.unlocked-badge { background-color: var(--levels-success); color: var(--levels-text-light); }
+.status-badge.active-badge { background-color: var(--levels-gold); color: var(--levels-bg); }
+.status-badge.redeemed-badge { background-color: var(--levels-text-medium); color: var(--levels-bg); }
+.status-badge.locked-badge { background-color: rgba(0,0,0,0.4); color: var(--levels-text-medium); }
+
+.reward-image-wrapper { 
+  width: 200px; height: 200px; border-radius: 2px; 
+  background-color: rgba(255,255,255,0.03); 
+  display: flex; justify-content: center; align-items: center; 
+  margin-bottom: 12px; padding: 5px; 
+  transition: var(--levels-transition); 
+  border: 2px solid var(--level-color, #555555);
+  overflow: hidden; 
+}
+.level-card.active .reward-image-wrapper { border-color: var(--levels-gold); }
+.reward-image-wrapper:hover {
+  box-shadow: 0 0 12px var(--level-color, #555555); 
+}
+.reward-image { 
+  max-width: 100%; max-height: 100%; 
+  object-fit: contain; 
+  display: block; 
+  transition: opacity 0.4s ease-in-out; /* Smooth transition for image change */
+}
+
+
+.level-card-content { margin-top: auto; width: 100%; }
+.reward-name { font-size: 1rem; font-weight: 500; color: var(--levels-text-light); margin-bottom: 7px; min-height: 40px; }
+.coins-to-unlock { font-size: 0.95rem; color: var(--level-color, var(--levels-text-medium)); font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; gap: 4px; }
+.level-card.active .coins-to-unlock { color: var(--levels-gold); }
+.coins-to-unlock .coins-icon { font-size: 1.1em; }
+.action-area { min-height: 40px; display:flex; align-items:center; justify-content:center;}
+.status-text { font-size: 0.85rem; font-style: italic; }
+.status-text.redeemed-text { color: var(--levels-success); font-weight: 500; }
+.status-text.locked-text { color: var(--levels-text-medium); }
+.level-card.locked { background-color: rgba(44, 44, 44, 0.7); opacity: 0.65; }
+.level-card.locked .reward-image-wrapper { filter: grayscale(90%); }
+.level-card.locked:hover { transform: none; box-shadow: var(--levels-card-shadow); }
+.level-card.unlocked { background-color: var(--levels-card-bg-unlocked); }
+.level-card.active { border-color: var(--levels-gold); transform: scale(1.04); box-shadow: 0 0 20px rgba(212, 167, 98, 0.4), 0 6px 15px rgba(0,0,0,0.4); z-index: 10; }
+.level-card.redeemed { opacity: 0.75; background-color: #202020; }
+.level-card.redeemed .reward-image-wrapper { filter: grayscale(60%) opacity(65%); }
+.level-card.redeemed .reward-name { text-decoration: line-through; color: var(--levels-text-medium); }
+
+/* Levels CTA Button (for redeem buttons) */
+.levels-cta-button { padding: 8px 18px; border: none; border-radius: 20px; font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: var(--levels-transition); text-transform: uppercase; letter-spacing: 0.4px; font-family: var(--levels-font); /* Poppins */ }
+.levels-cta-button.redeem-button { background: var(--levels-gold); color: var(--levels-bg); box-shadow: 0 3px 8px rgba(212, 167, 98, 0.25); }
+.levels-cta-button.redeem-button:hover { background-color: #c09550; transform: scale(1.04); box-shadow: 0 5px 12px rgba(212, 167, 98, 0.35); }
+
+/* Popup Styling (for Levels' popups - distinct from sc-modal-*) */
+.popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0, 0.9); display: flex; justify-content: center; align-items: center; z-index: 1001; padding: 15px; animation: fadeInPopupOverlay 0.3s ease-out; font-family: var(--levels-font); /* Poppins */ }
+@keyframes fadeInPopupOverlay { from { opacity: 0; } to { opacity: 1; } }
+.popup-content { background-color: var(--levels-card-bg); padding: 25px; border-radius: var(--levels-card-radius); box-shadow: 0 8px 25px rgba(0,0,0,0.4); width: 90%; max-width: 500px; text-align: left; position: relative; border-top: 4px solid var(--levels-gold); animation: slideInPopupContent 0.4s ease-out; }
+@keyframes slideInPopupContent { from { opacity: 0; transform: translateY(25px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+.popup-close-button { position: absolute; top: 12px; right: 12px; background: transparent; border: none; color: var(--levels-text-medium); font-size: 1.8rem; line-height: 1; cursor: pointer; padding: 4px; transition: color 0.2s ease; }
+.popup-close-button:hover { color: var(--levels-text-light); }
+.popup-title { font-family: var(--levels-header-font); font-size: 1.6rem; color: var(--levels-gold); margin-bottom: 18px; text-align: center; }
+.popup-details p, .popup-warning p { margin-bottom: 8px; font-size: 0.95rem; color: var(--levels-text-light); }
+.popup-details p strong, .popup-warning p strong { color: var(--levels-gold); font-weight: 600; }
+.popup-details .coins-icon { margin-right: 2px; }
+.popup-warning { background-color: rgba(212, 167, 98, 0.05); padding: 12px; border-radius: 6px; margin: 18px 0; border-left: 2px solid var(--levels-gold); }
+.popup-warning ul { list-style-position: inside; padding-left: 4px; font-size: 0.85rem; color: var(--levels-text-medium); }
+.popup-warning ul li { margin-bottom: 4px; }
+.popup-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 20px; }
+.levels-cta-button.confirm-button { background-color: var(--levels-gold); color: var(--levels-bg); }
+.levels-cta-button.confirm-button:disabled { background-color: #a48047; cursor: not-allowed; }
+.levels-cta-button.cancel-button { background-color: #555555; color: var(--levels-text-light); }
+.levels-cta-button.cancel-button:disabled { background-color: #333333; cursor: not-allowed; }
+
+/* Image Viewer Popup (scoped to .popup-overlay.image-viewer-overlay) */
+.popup-overlay.image-viewer-overlay .popup-content { padding: 8px; background-color: rgba(0,0,0,0.3); border-top: none; max-width: 75vw; max-height: 75vh; }
+.enlarged-reward-image { display: block; max-width: 50%; max-height: calc(100% - 20px); object-fit: contain; border-radius: 6px; box-shadow: 0 0 25px rgba(0,0,0,0.4); }
+.popup-overlay.image-viewer-overlay .popup-close-button { background-color: rgba(0,0,0,0.6); color: var(--levels-text-light); border-radius: 50%; width: 15px; height: 15px; display: flex; justify-content: center; align-items: center; top: -12px; right: -12px; box-shadow: 0 1px 4px rgba(0,0,0,0.25); z-index: 1; }
+.popup-overlay.image-viewer-overlay .popup-close-button:hover { background-color: rgba(0,0,0,0.8); }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+
+
+/* --- NEW: Image Slider for Reward Cards --- */
+.reward-image-slider {
+  width: 100%;
+  height: 100%;
+  position: relative; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; 
+  border-radius: inherit; 
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+}
+
+.slider-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.35);
+  color: white;
+  border: none;
+  font-size: 1.3rem; 
+  padding: 0px 6px; 
+  height: 10px; 
+  width: 10px;
+  line-height: 28px; 
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1; 
+  opacity: 0; 
+  transition: opacity 0.25s ease, background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reward-image-slider:hover .slider-nav-button,
+.reward-image-slider:focus-within .slider-nav-button,
+.reward-image-slider.interaction-active .slider-nav-button { /* Keep visible if focused within or actively interacting */
+  opacity: 1; 
+}
+
+.slider-nav-button.prev {
+  left: 4px;
+}
+
+.slider-nav-button.next {
+  right: 4px;
+}
+
+.slider-nav-button:hover,
+.slider-nav-button:focus {
+  background-color: rgba(0, 0, 0, 0.65);
+  outline: none; 
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 5px; 
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  z-index: 2; 
+  padding: 3px 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.reward-image-slider:hover .slider-dots,
+.reward-image-slider:focus-within .slider-dots,
+.reward-image-slider.interaction-active .slider-dots {
+  opacity: 1;
+}
+
+.slider-dot {
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.slider-dot:hover,
+.slider-dot:focus {
+  background-color: rgba(255, 255, 255, 0.7);
+  outline: none;
+}
+
+.slider-dot.active {
+  background-color: white;
+  transform: scale(1.15);
+}
+
+
+/* Responsive adjustments for Levels section elements */
+@media(max-width: 768px) {
+    .levels-grid-path { padding-bottom: 25px; }
+    .level-card { flex: 0 0 230px; min-height: 360px; } 
+    .path-connector { width: 25px; } 
+}
+@media(max-width: 480px) {
+    .level-card { flex: 0 0 200px; padding: 12px; min-height: 340px; } 
+    .level-banner h3 { font-size: 1.1rem; } 
+    .reward-image-wrapper { width: 90px; height: 90px; } 
+    .reward-name { font-size: 0.9rem; min-height: 36px; } 
+    .coins-to-unlock { font-size: 0.85rem; } 
+    .levels-cta-button { font-size: 0.8rem; padding: 7px 14px; } 
+    .popup-content { padding: 18px; } /* For Levels' popups */
+    .popup-title { font-size: 1.4rem; } /* For Levels' popups */
+    .slider-nav-button { height: 26px; width: 26px; font-size: 1.1rem; line-height: 24px; }
+    .slider-dots { bottom: 3px; }
+    .slider-dot { width: 6px; height: 6px; }
+}
+
+/* --- END: Appended Levels.css Content --- */
+
+
+/* Add these new styles to your existing Supercoin.css file */
+
+/* --- Terms & Conditions Section --- */
+.sc-accordion-container {
+  max-width: 800px;
+  margin: 2rem auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sc-accordion-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 167, 98, 0.2);
+  border-radius: 12px;
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.sc-accordion-item[open] {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(212, 167, 98, 0.5);
+}
+
+.sc-accordion-item summary {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #eee;
+  cursor: pointer;
+  list-style: none; /* Remove default marker */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sc-accordion-item summary::-webkit-details-marker {
+  display: none; /* Hide marker for Chrome/Safari */
+}
+
+.sc-accordion-item summary::after {
+  content: '▼'; /* Custom marker */
+  font-size: 0.8rem;
+  color: #d4a762;
+  transition: transform 0.3s ease;
+}
+
+.sc-accordion-item[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.sc-accordion-item p {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-top: 1rem;
+  padding-left: 0.5rem;
+  border-left: 2px solid #d4a762;
+}
+
+/* --- Special Offer Box --- */
+.special-offer-box {
+  background: linear-gradient(135deg, rgba(212, 167, 98, 0.1), rgba(212, 167, 98, 0.05));
+  border: 1px solid rgba(212, 167, 98, 0.4);
+  border-radius: 15px;
+  padding: 1.5rem 2rem;
+  max-width: 800px;
+  margin: 1.5rem auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.special-offer-box h4 {
+  color: #d4a762;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.special-offer-box p {
+  color: #ddd;
+  margin-bottom: 1rem;
+}
+
+.special-offer-box ul {
+  list-style: none;
+  padding-left: 0;
+  color: #ccc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.special-offer-box ul li {
+  display: flex;
+  align-items: center;
+}
+
+.special-offer-box ul li i {
+  color: #d4a762;
+  margin-right: 0.75rem;
+  width: 20px; /* Align icons */
+  text-align: center;
+}

@@ -1,0 +1,40 @@
+/*
+================================================
+FIX FOR REACT SIDEBAR SCROLLING IN SNEAT THEME
+================================================
+This overrides the theme's custom JavaScript scrollbar to restore
+native browser scrolling, which is more reliable with React's
+dynamic rendering.
+*/
+.layout-menu .menu-inner {
+    /*
+      Enables the vertical scrollbar only when the content is taller
+      than the container. The !important is needed to override the
+      theme's default of 'overflow: hidden'.
+    */
+    overflow-y: auto !important;
+  
+    /*
+      (Optional but recommended)
+      Improves the scrolling experience on touch devices and some browsers.
+    */
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /*
+    This ensures the scrollbar styling is consistent and
+    doesn't look out of place. This targets Webkit browsers (Chrome, Safari).
+  */
+  .layout-menu .menu-inner::-webkit-scrollbar {
+    width: 6px; /* Width of the scrollbar */
+  }
+  
+  .layout-menu .menu-inner::-webkit-scrollbar-track {
+    background: transparent; /* Makes the track invisible */
+  }
+  
+  .layout-menu .menu-inner::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); /* A semi-transparent dark thumb */
+    border-radius: 10px;
+    border: none;
+  }

@@ -1,0 +1,175 @@
+/* SpinWheel.css */
+/* Root variables from Supercoin.css are assumed to be available if this is imported globally,
+   otherwise, define --shikshaarthi-gold, --text-dark, --text-light etc. here or import. */
+
+   .spin-wheel-component-wrapper.improved-ui {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 20px; /* Increased padding */
+    gap: 25px;
+    width: 100%;
+    max-width: 420px; /* Wider for a more substantial feel */
+    margin: 20px auto; /* Add some margin if it's directly on page */
+    background: linear-gradient(145deg, #ffffff, #f0f0f0); /* Subtle gradient background */
+    border-radius: 20px; /* Softer radius */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 0 0 5px #fff, 0 0 0 7px #e0e0e0; /* Layered border/shadow */
+    border: 1px solid #ddd;
+  }
+  
+  .wheel-assembly {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px; /* Canvas width */
+    height: 300px; /* Canvas height */
+  }
+  
+  .spin-wheel-canvas {
+    border-radius: 50%;
+    /* Shadow is now part of drawWheel or could be added here for fallback */
+  }
+  
+  .wheel-pointer-indicator {
+    position: absolute;
+    top: -15px; /* Positioned more distinctly above the wheel */
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg); /* Ensure it points straight down */
+    width: 0;
+    height: 0;
+    border-left: 22px solid transparent;
+    border-right: 22px solid transparent;
+    border-top: 35px solid var(--shikshaarthi-gold, #d4a762); 
+    z-index: 10;
+    filter: drop-shadow(0px 3px 3px rgba(0,0,0,0.25));
+    /* Adding a small dot on the pointer */
+  }
+  .wheel-pointer-indicator::before {
+    content: '';
+    position: absolute;
+    top: -32px; /* Adjust to be on the main body of pointer */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #fff; /* White dot */
+    border-radius: 50%;
+    box-shadow: 0 0 2px rgba(0,0,0,0.3);
+  }
+  
+  
+  .spin-action-button {
+    padding: 16px 45px;
+    font-size: 1.25rem; 
+    font-weight: bold;
+    color: var(--text-dark, #222222); 
+    background: var(--shikshaarthi-gold, #d4a762);
+    /* background: linear-gradient(45deg, var(--shikshaarthi-gold, #d4a762), #e7b872); Slightly lighter gold gradient */
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy transition */
+    box-shadow: 0 5px 0px #a48047, 0 8px 18px rgba(212, 167, 98, 0.4); /* 3D effect shadow */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .spin-action-button:hover:not(.disabled) {
+    background-color: #c89c56; /* Darker gold on hover */
+    transform: translateY(2px) scale(1.02); /* Slight press down effect */
+    box-shadow: 0 3px 0px #a48047, 0 6px 15px rgba(212, 167, 98, 0.5);
+  }
+  .spin-action-button:active:not(.disabled) {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0px #a48047, 0 4px 10px rgba(212, 167, 98, 0.4);
+  }
+  
+  
+  .spin-action-button.disabled {
+    background: #e0e0e0; /* More distinct disabled color */
+    color: #9e9e9e;
+    cursor: not-allowed;
+    box-shadow: 0 5px 0px #bdbdbd; /* Disabled 3D shadow */
+    opacity: 0.8;
+  }
+  .spin-action-button.spinning {
+    animation: pulseButtonGold 1.2s infinite ease-in-out;
+    cursor: default;
+  }
+  
+  /* (pulseButtonGold keyframes from previous CSS can be kept or adjusted) */
+  @keyframes pulseButtonGold {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+  }
+  
+  
+  .spin-notice.demo-mode {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    border-radius: 8px;
+    text-align: center;
+    width: auto; /* Let it size to content */
+    display: inline-block; /* Center it if its parent is text-align:center */
+    margin-top: -10px; 
+    background-color: #fff8e1; /* Light yellow */
+    color: #8a6d3b;
+    border: 1px solid #faebcc;
+    font-style: italic;
+  }
+  
+  .spin-result-message {
+    margin-top: 20px;
+    padding: 20px 25px;
+    background: #ffffff;
+    border: 3px dashed var(--shikshaarthi-gold, #d4a762);
+    border-radius: 15px;
+    text-align: center;
+    animation: fadeInResult 0.5s ease-out, bounceInResult 0.6s 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 5px 15px rgba(212, 167, 98, 0.2);
+    width: 100%;
+  }
+  .spin-result-message h3 {
+    color: var(--shikshaarthi-gold, #d4a762);
+    font-size: 2rem; /* Larger result title */
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+  .spin-result-message p {
+    font-size: 1.3rem; 
+    color: var(--text-dark, #333333);
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  
+  .spin-again-button {
+    padding: 10px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-light, #fff);
+    background-color: var(--text-dark, #222); /* Dark button to spin again */
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  }
+  .spin-again-button:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+  }
+  
+  
+  @keyframes fadeInResult { /* Keep this */
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes bounceInResult { /* Added bounce */
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1.1); }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); opacity: 1; }
+  }

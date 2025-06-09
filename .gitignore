@@ -1,0 +1,61 @@
+# =========================================
+# Node.js
+# =========================================
+
+# Dependency directories
+# Never commit node_modules
+node_modules/
+
+# Logs
+# These are generated at runtime
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# =========================================
+# Environment Files
+# =========================================
+
+# Never commit environment files with secrets!
+# This is the most important rule.
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+
+# =st=======================================
+# Build & Output Directories
+# =========================================
+
+# Compiled frontend folders
+dist
+build
+.next/
+out/
+
+# =========================================
+# System & Editor Files
+# =========================================
+
+# macOS files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code directory
+.vscode/
+
+# =========================================
+# Other
+# =========================================
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache

@@ -1,0 +1,72 @@
+/* HowToEarn.css */
+.how-to-earn-section {
+    /* background-color: #fff; */
+  }
+  .earning-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .earning-card {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee;
+  }
+  
+  .earning-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(var(--primary-color-rgb), 0.2); /* Use RGB version of primary for shadow */
+  }
+  
+  .card-icon {
+    font-size: 3rem; /* For emoji icons */
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    /* If using font icons, style them here e.g. display: block; */
+  }
+  
+  .card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+  .card-description {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 15px;
+      min-height: 40px; /* Adjust for consistent card height */
+  }
+  
+  .card-coins {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    background-color: #fef5e7; /* Light shade of primary */
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+  .verification-note {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.95rem;
+    color: #555;
+    background-color: #fff3cd; /* Light yellow warning */
+    border: 1px solid #ffeeba;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .verification-note strong {
+    color: #856404; /* Darker yellow for emphasis */
+  }

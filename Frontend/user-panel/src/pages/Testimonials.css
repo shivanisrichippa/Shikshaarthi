@@ -1,0 +1,68 @@
+/* Testimonials.css */
+
+.testimonial-item {
+    padding: 2rem;
+    border: 1px solid #eee;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.testimonial-item .d-flex {
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.testimonial-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+.testimonial-item .fa-quote-right {
+    color: #ccc;
+    font-size: 2rem;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.testimonial-item .testimonial-content {
+    margin-top: 1rem;
+}
+
+.testimonial-item .fas.fa-star {
+    color: gold;
+    margin-right: 0.2rem;
+}
+
+/* Adjustments for Owl Carousel */
+.testimonial-carousel-1 .owl-item,
+.testimonial-carousel-2 .owl-item {
+    padding: 0.5rem;
+}
+
+.testimonial-carousel-1 .owl-stage-outer,
+.testimonial-carousel-2 .owl-stage-outer {
+    padding: 1rem 0;
+}
+
+
+/* Make sure your .wow styles are defined somewhere globally or in this component */
+.wow { /* Example - adapt as needed */
+  visibility: hidden; /* Or initial styles */
+}
+
+/* Add Owl Carousel styles to prevent flicker on load */
+.owl-carousel {
+    display: none; /* Hide until initialized */
+}
+
+.owl-carousel.owl-loaded {
+    display: block; /* Show after initialization */
+}
